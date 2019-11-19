@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HarryPotter</string>
+    <string name="product_image_desc">This is a product image</string>
+    <string name="product_author">Author desc</string>
+    <string name="favorite_desc">Favorite toggle</string>
+    <string name="detail_image_product">Detail image product</string>
+    <string name="details_image_product">desc detail image product</string>
+</resources>

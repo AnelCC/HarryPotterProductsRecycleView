@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="productViewModel"
+            type="com.anelcc.harrypotter.products.ProductViewModel" />
+        <variable
+            name="handlerDetailClickListener"
+            type="com.anelcc.harrypotter.detail.HandlerDetailClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_padding">
+
+        <TextView
+            android:id="@+id/detail_title_product"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/not_height"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:text="@{productViewModel.title}"
+            android:textSize="@dimen/text_size_title"
+            app:layout_constraintBottom_toTopOf="@+id/detail_author_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="10"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/detail_author_product"
+            android:layout_width="@dimen/not_width"
+            android:layout_height="@dimen/not_height"
+            app:layout_constraintHorizontal_weight="90"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:text="@{productViewModel.author}"
+            android:textSize="@dimen/text_size_author"
+            app:layout_constraintBottom_toTopOf="@+id/detail_image_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favorite_product"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_title_product"
+            app:layout_constraintVertical_weight="10"
+            tools:text="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/detail_image_product"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/not_height"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:contentDescription="@string/details_image_product"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_author_product"
+            app:layout_constraintVertical_weight="80"
+            tools:src="@tools:sample/avatars" />
+
+
+        <ToggleButton
+            android:id="@+id/favorite_product"
+            android:layout_width="@dimen/not_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:background="@drawable/toggle_favorite"
+            android:checked="@{productViewModel.favorite}"
+            android:contentDescription="@string/favorite_desc"
+            android:onClick="@{() -> handlerDetailClickListener.favoriteDetailClicked(productViewModel)}"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="10"
+            app:layout_constraintStart_toEndOf="@+id/detail_author_product"
+            app:layout_constraintTop_toTopOf="@+id/detail_author_product"
+            tools:checked="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
