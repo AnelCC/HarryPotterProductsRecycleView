@@ -3,7 +3,11 @@ package com.anelcc.harrypotter.products;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProductViewModel implements Parcelable {
+import androidx.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.library.baseAdapters.BR;
+
+public class ProductViewModel extends BaseObservable implements Parcelable {
 
     private Product product;
     public String title, author, image;
@@ -35,18 +39,22 @@ public class ProductViewModel implements Parcelable {
         }
     };
 
+    @Bindable
     public String getTitle() {
         return product.getTitle();
     }
 
+    @Bindable
     public String getAuthor() {
         return product.getAuthor();
     }
 
+    @Bindable
     public String getImage() {
         return product.getImageURL();
     }
 
+    @Bindable
     public boolean isFavorite() {
         return isFavorite;
     }
@@ -57,6 +65,7 @@ public class ProductViewModel implements Parcelable {
 
     public void setFavorite(boolean favorite) {
         isFavorite = favorite;
+        notifyPropertyChanged(BR.favorite);
     }
 
 
