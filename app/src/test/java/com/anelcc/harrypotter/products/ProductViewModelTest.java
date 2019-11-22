@@ -22,7 +22,7 @@ public class ProductViewModelTest {
     private ProductViewModel model;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         when(product.getTitle()).thenReturn(TITLE);
         when(product.getAuthor()).thenReturn(AUTHOR);
         when(product.getImageURL()).thenReturn(IMAGE_URL);
@@ -47,5 +47,14 @@ public class ProductViewModelTest {
     @Test
     public void shouldReturnTheCorrectImage() {
         assertEquals(IMAGE_URL, model.getImage());
+    }
+
+    @Test
+    public void shouldReturnFavoriteAfterChangeToTrue() {
+        assertFalse(model.isFavorite());
+
+        model.setFavorite(true);
+
+        assertTrue(model.isFavorite());
     }
 }
